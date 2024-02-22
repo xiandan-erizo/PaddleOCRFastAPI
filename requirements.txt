@@ -6,9 +6,9 @@
 #
 fastapi==0.101.0
     # via -r requirements.in
-paddleocr==2.7.0.0
+paddleocr==2.7.0.3
     # via -r requirements.in
-paddlepaddle==2.5.1
+paddlepaddle-gpu==2.6.0
     # via -r requirements.in
 python-multipart==0.0.6
     # via -r requirements.in
@@ -21,3 +21,4 @@ numpy==1.23.5
     
 # The following packages are considered to be unsafe in a requirements file:
 # setuptools
+easyocr==1.7.1

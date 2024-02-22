@@ -33,3 +33,21 @@ def bytes_to_ndarray(img_bytes: str):
     image_array = np.frombuffer(img_bytes, dtype=np.uint8)
     image_np2 = cv2.imdecode(image_array, cv2.IMREAD_COLOR)
     return image_np2
+
+
+def convert_numpy(obj: any) -> any:
+    """递归转换 NumPy 数据类型到 Python 数据类型"""
+    if isinstance(obj, np.integer):
+        return int(obj)
+    elif isinstance(obj, np.floating):
+        return float(obj)
+    elif isinstance(obj, np.ndarray):
+        return obj.tolist()
+    elif isinstance(obj, list):
+        return [convert_numpy(item) for item in obj]
+    elif isinstance(obj, dict):
+        return {key: convert_numpy(value) for key, value in obj.items()}
+    elif isinstance(obj, tuple):
+        return tuple(convert_numpy(item) for item in obj)
+    else:
+        return obj
